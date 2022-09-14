@@ -3,7 +3,6 @@ class Board {
         this.rows = 8
         this.cols = 8
         this.rowList = []
-        this.player = 'white'
         this.currentPiece = null
         this.player = 'white'
     }
