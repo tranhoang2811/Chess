@@ -1,0 +1,171 @@
+@startuml class
+class Piece {
+    + colIndex : int
+    + rowIndex : int
+    + name : string
+    + color : string
+    + pieceElement : element
+    - rowMovement : array
+    - colMovement : array
+
+    + renderPieceElement() : void
+    + destroyPieceElement() : void
+    + findValidMove() : void
+}
+
+class Pawn {
+    + colIndex : int
+    + rowIndex : int
+    + name : string
+    + color : string
+    + pieceElement : element
+    + isFirstMove : boolean
+    - rowMovement : array
+    - colMovement : array
+
+    + renderPieceElement() : void
+    + destroyPieceElement() : void
+    + findValidMove() : void
+    + handleLeveling() : void
+}
+
+class Bishop {
+    + colIndex : int
+    + rowIndex : int
+    + name : string
+    + color : string
+    + pieceElement : element
+    - rowMovement : array
+    - colLeftDiagonalMovement : array
+    - colRightDiagonalMovement : array
+
+    + renderPieceElement() : void
+    + destroyPieceElement() : void
+    + findValidMove() : void
+    + validateMoveRange() : array
+    + findValidMoveOnLeftDiagonal() : void
+    + findValidMoveOnLeftDiagonal() : void
+}
+
+class King {
+    + colIndex : int
+    + rowIndex : int
+    + name : string
+    + color : string
+    + pieceElement : element
+    + isFirstMove : boolean
+    - rowMovement : array
+    - colMovement : array
+
+    + renderPieceElement() : void
+    + destroyPieceElement() : void
+    + findValidMove() : void
+    + handleCastling() : void
+    + checkPiecesInBetween() : void
+    + checkRookFirstMove() : void
+}
+
+class Rook {
+    + colIndex : int
+    + rowIndex : int
+    + name : string
+    + color : string
+    + pieceElement : element
+    + isFirstMove : boolean
+
+    + renderPieceElement() : void
+    + destroyPieceElement() : void
+    + findValidMove() : void
+    + validateMoveRange() : array
+    + findValidMoveOnRow() : void
+    + findValidMoveOnCol() : void
+}
+
+class Knight {
+    + colIndex : int
+    + rowIndex : int
+    + name : string
+    + color : string
+    + pieceElement : element
+    - rowMovement : array
+    - colMovement : array
+
+    + renderPieceElement() : void
+    + destroyPieceElement() : void
+    + findValidMove() : void
+}
+
+class Queen {
+    + colIndex : int
+    + rowIndex : int
+    + name : string
+    + color : string
+    + pieceElement : element
+    - rowMovement : array
+    - colLeftDiagonalMovement : array
+    - colRightDiagonalMovement : array
+
+    + renderPieceElement() : void
+    + destroyPieceElement() : void
+    + findValidMove() : void
+    + validateMoveRange() : array
+    + findValidMoveOnLeftDiagonal() : void
+    + findValidMoveOnLeftDiagonal() : void
+    + findValidMoveOnRow() : void
+    + findValidMoveOnCol() : void
+}
+
+class Square {
+    + index : array
+    + color : string
+    + piece : object
+    + squareElement : element
+
+    + renderSquareElement() : void
+    + changeSquareElementColor() : void
+}
+
+class Row {
+    + colList : array
+    + rowElement : object
+
+    + renderRowElement() : void
+}
+
+class Board {
+    + cols : int
+    + rows : int
+    + rowList : array
+    + currentPieceSelected : element
+    + playerTurn : string
+
+    + createObjectsAndElements() : void
+    + renderElements() : void
+    + changePieceObjectIndex() : void
+    + handlePlayerTurn() : boolean
+    + changeValidSquaresColor() : void
+    + restartGame() : void
+}
+
+class LevelUpOption {
+    + pawnObject : pawn
+    + optionsContainerElement : element
+    + optionNameList : array
+    + optionElementList : array
+
+    + renderOptionsElement()
+    + addOptionsEvent()
+    - createNewPiece()
+}
+
+Piece <|-- Pawn
+Piece <|-- Bishop
+Piece <|-- King
+Piece <|-- Rook
+Piece <|-- Knight
+Piece <|-- Queen
+Pawn - LevelUpOption
+Square *-- Piece
+Row *-- Square
+Board *-- Row
+@enduml

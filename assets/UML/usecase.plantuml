@@ -1,0 +1,13 @@
+@startuml chess usecase
+left to right direction
+actor player
+package chess {
+    player -- (PVP)
+    player -- (PVE)
+    (PVE) .> (new game) : <<include>>
+    (PVE) .> (continue last game) : <<include>>
+    (new game) .> (Restart game) : <<include>>
+    (continue last game) .> (Restart game) : <<include>>
+    (PVP) .> (find game) : <<include>>
+}
+@enduml

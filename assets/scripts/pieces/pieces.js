@@ -15,7 +15,7 @@ class Piece {
         const _this = this
         this.pieceElement.addEventListener('click', function(event) {
             const squareElement = event.target.parentElement
-            // 
+            //  && board.handlePlayerTurn(_this.color)
             if (squareElement.style.backgroundColor === 'turquoise') {
                 const newRookColIndex = _this.colIndex === 0 ? 3 : 5 
                 const oldRookIndex = [_this.rowIndex, _this.colIndex]
@@ -29,7 +29,7 @@ class Piece {
                 board.replacePieceObject(oldKingIndex, newKingIndex)
                 board.player = _this.color === 'white' ? 'black' : 'white'
                 board.renderElements()
-            } else if (squareElement.style.backgroundColor !== 'red' && board.handlePlayerTurn(_this.color)) {
+            } else if (squareElement.style.backgroundColor !== 'red') {
                 board.renderElements()
                 board.currentPiece = _this
                 _this.findMove(board.rowList)
